@@ -27,7 +27,7 @@ export class LoginService {
     // tslint:disable-next-line:max-line-length
     constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string, @Optional() @Inject(API_BASE_URL) _baseUrlLogin?: string) {
         this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : 'http://localhost:56115';
+        this.baseUrl = baseUrl ? baseUrl : 'http://localhost:59505';
         this.baseUrlLogin = _baseUrlLogin;
         this.baseUrlLogin = this.baseUrl + '/token';
         // tslint:disable-next-line:prefer-const
@@ -45,6 +45,7 @@ login(userName, password) {
                 sessionStorage.setItem('access_token', res.access_token);
                 sessionStorage.setItem('bearer_token', res.bearer_token);
                 sessionStorage.setItem('expires_in', res.expires_in.toString());
+                sessionStorage.setItem('UserName', userName);
                localStorage.setItem('auth_token', res.auth_token);
              })
              .catch(this.handleError);

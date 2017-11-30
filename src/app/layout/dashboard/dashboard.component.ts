@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
         this.sliders.push({
             imagePath: 'assets/images/slider1.jpg',
             label: 'First slide label',
-            text: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
+            text: 'Prueba' +  sessionStorage.getItem('UserName')
         }, {
             imagePath: 'assets/images/slider2.jpg',
             label: 'Second slide label',

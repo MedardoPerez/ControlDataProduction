@@ -8,15 +8,18 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+    nameUser: string = sessionStorage.getItem('UserName');
+    Prueba: string;
     pushRightClass: string = 'push-right';
-    
+
     constructor(private translate: TranslateService, public router: Router) {
         this.router.events.subscribe((val) => {
             if (val instanceof NavigationEnd && window.innerWidth <= 992 && this.isToggled()) {
                 this.toggleSidebar();
             }
         });
+
+        // const name = sessionStorage.getItem('UserName');
     }
 
     ngOnInit() {}
