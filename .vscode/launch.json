@@ -1,14 +1,47 @@
 {
         "version": "0.2.0",
+        // "configurations": [
+
+        //     {
+        //         "type": "node",
+        //         "request": "launch",
+        //         "name": "Launch Program",
+        //         "program": "${file}",
+        //         // "outFiles": [
+        //         //     "${workspaceRoot}\bin\www"
+        //         // ]
+        //     }
+        // ]
+
         "configurations": [
-            {
-                "type": "node",
-                "request": "launch",
-                "name": "Launch Program",
-                "program": "${file}",
-                "outFiles": [
-                    "${workspaceRoot}/out/**/*.js"
-                ]
+
+             {
+            "name": "Launch Chrome against localhost, with sourcemaps",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4201",
+            "sourceMaps": true,
+            "diagnosticLogging": true,
+            "webRoot": "${workspaceRoot}/src",
+            "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "sourceMapPathOverrides": {
+                "webpack:///C:*":"C:/*"
             }
-        ]
+        },
+        {
+            "name": "Attach to Chrome, with sourcemaps",
+            "type": "chrome",
+            "request": "attach",
+            "port": 4201,
+            "sourceMaps": true,
+            "diagnosticLogging": true,
+            "webRoot": "${workspaceRoot}/src",
+            "sourceMapPathOverrides": {
+                "webpack:///C:*":"C:/*"
+            }
+        }
+            ]
+
+
+
     }

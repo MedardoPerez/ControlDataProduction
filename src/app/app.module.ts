@@ -11,6 +11,9 @@ import { AuthGuard } from './shared';
 
 import { LoginService } from './shared/services/LoginService';
 import { UserDTO } from './shared/services/LoginService';
+import { KacoProductionService } from './shared/services/KacoProductionService';
+import { SystemMeasuredDataDTO } from './shared/services/KacoProductionService';
+import { ChartsModule as Ng2Charts } from 'ng2-charts';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -27,6 +30,7 @@ export function HttpLoaderFactory(http: Http) {
         FormsModule,
         HttpModule,
         AppRoutingModule,
+        Ng2Charts,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -35,7 +39,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [AuthGuard, LoginService],
+    providers: [AuthGuard, LoginService, KacoProductionService, Ng2Charts],
     bootstrap: [AppComponent]
 })
 export class AppModule {
