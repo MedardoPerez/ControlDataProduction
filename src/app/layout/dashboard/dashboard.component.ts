@@ -35,19 +35,21 @@ export class DashboardComponent implements OnInit {
 
         scales: {
             xAxes: [{
+                display: true,
+                ticks: {
+                    MinfontSize: 6,
+                    fontSize: 10},
                 gridLines: {
                     offsetGridLines: true,
                     mirror: true,
                 },
-                ticks: {
-                    beginAtZero: true
-                }
             }],
 
         },
-
-
-        animation: {
+        animation:
+         {
+            animateRotate: true,
+            animateScale: true,
             onComplete: function () {
                 var chartInstance = this.chart,
                     ctx = chartInstance.ctx;

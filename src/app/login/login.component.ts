@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
         }, error => {
             this.MensajeError = 'Usuario o Password incorrecto';
             this.loading = false;
+            sessionStorage.clear();
+            localStorage.setItem('isLoggedin', 'false');
         });
     }
 

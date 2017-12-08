@@ -1,17 +1,25 @@
 <div [@routerTransition]>
-    <!-- <app-page-header [heading]="'Charts'" [icon]="'fa-bar-chart-o'"></app-page-header> -->
-    <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Bar Chart
-                </div>
-                <div class="card-block">
-                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-                        [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
+    <div class="card mb-6">
+        <div class="card-header">Production Stats</div>
+        <div class="card-block table-responsive">
+            <table class="table table-hover table-striped">
+                <thead style="font-weight:bold;">
+                    <tr>
+                        <th>Designation</th>
+                        <th>System Id</th>
+                        <th>Energy Yesterday </th>
+                        <th>Energy Latest</th>
+                    </tr>
+                </thead>
+                <tbody ng-if="ListaProduccion"> 
+                    <tr *ngFor="let item of ListaProduccion;">
+                        <td>{{item.Nombre}}</td>
+                        <td>{{item.SystemId}}</td>
+                        <td>{{item.ValueEnergyYesterday}}</td>
+                        <td>{{item.ValueEnergyLatest}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
