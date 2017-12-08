@@ -18,10 +18,53 @@ export class DashboardComponent implements OnInit {
     public sliders: Array<any> = [];
     ListaProduccion: SystemMeasuredDataDTO[];
     ListaSistemas: string[];
+
     // bar chart
     public barChartOptions: any = {
         scaleShowVerticalLines: true,
         responsive: true,
+        scaleShowValues: true,
+        scaleValuePaddingX: 10,
+        scaleValuePaddingY: 10,
+        legend: {
+            display: true,
+            labels: {
+                fontsize: 80
+            },
+        },
+
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    offsetGridLines: true,
+                    mirror: true,
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+
+        },
+
+
+        animation: {
+            onComplete: function () {
+                var chartInstance = this.chart,
+                    ctx = chartInstance.ctx;
+
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+
+                this.data.datasets.forEach(function (dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    meta.data.forEach(function (bar, index) {
+                        var data = dataset.data[index];
+                        ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                    });
+                });
+            }
+        },
+
         tooltips: {
             enabled: true,
             mode: 'single',
@@ -30,8 +73,8 @@ export class DashboardComponent implements OnInit {
                 var label = data.labels[tooltipItem.index];
                 var datasetLabel = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
                 return  datasetLabel + '%';
-            }
-        }
+            },
+        },
     }
     };
 
@@ -93,9 +136,9 @@ export class DashboardComponent implements OnInit {
          console.log(e);
     }
 
-    public chartHovered(e: any): void {
-        //  console.log(e);
-    }
+    // public chartHovered(e: any): void {
+    //     //  console.log(e);
+    // }
 
 
 
@@ -119,6 +162,15 @@ export class DashboardComponent implements OnInit {
             //  console.log(this.barChartData)
             //  console.log(this.barChartLabels);
          }, error => {
+            //  console.log(error.status)
+            if(error.status == '401')
+            {
+                // console.log(error.status);
+                // console.log(error.response);
+               sessionStorage.clear();
+               localStorage.setItem('isLoggedin', 'false');
+               this._router.navigate(['/login']);
+            }
          });
     }
 
