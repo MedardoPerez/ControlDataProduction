@@ -31,6 +31,36 @@ export class KacoProductionService {
         let prueba: string;
     }
 
+ObtenerDatosProduccionPorPlanta(): Observable<SystemMeasuredDataDTO[]>
+    // tslint:disable-next-line:one-line
+    {
+    let url = this.baseUrl + '/api/ImportProductionData/System/ProductionByPlant';
+        url = url.replace(/[?&]$/, '');
+
+        const options_ = {
+            method: 'get',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Aplication-Language': 'application/json',
+                'Authorization': 'bearer ' + sessionStorage.getItem('access_token')
+            })
+        };
+        return this.http.request(url, options_).flatMap((response_) => {
+            return this.processProduction(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processProduction(response_);
+                } catch (e) {
+                    return <Observable<SystemMeasuredDataDTO[]>><any>Observable.throw(e);
+                }
+                // tslint:disable-next-line:curly
+            } else
+                return <Observable<SystemMeasuredDataDTO[]>><any>Observable.throw(response_);
+        });
+    }
+
  ObtenerDatosProduccion(): Observable<SystemMeasuredDataDTO[]>
  // tslint:disable-next-line:one-line
  {
