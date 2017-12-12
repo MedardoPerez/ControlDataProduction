@@ -1,15 +1,14 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Bootstrap Component'" [icon]="'fa-th-list'"></app-page-header>
-    <app-modal></app-modal>
-    <app-alert></app-alert>
-    <app-buttons></app-buttons>
-    <app-collapse></app-collapse>
-    <app-date-picker></app-date-picker>
-    <app-dropdown></app-dropdown>
-    <app-pagination></app-pagination>
-    <app-pop-over></app-pop-over>
-    <app-progressbar></app-progressbar>
-    <app-tabs></app-tabs>
-    <app-tooltip></app-tooltip>
-    <app-timepicker></app-timepicker>
+<div class="col col-sm-15">
+    <div class="card mb-7">
+        <div class="card-header">
+            Daily Production
+        </div>
+        <div class="card-block">
+            <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+            </canvas>
+        </div>
+    </div>
+</div>
 </div>

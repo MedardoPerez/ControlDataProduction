@@ -4,20 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BsComponentComponent } from './bs-component.component';
-import {
-    AlertComponent,
-    ButtonsComponent,
-    ModalComponent,
-    CollapseComponent,
-    DatePickerComponent,
-    DropdownComponent,
-    PaginationComponent,
-    PopOverComponent,
-    ProgressbarComponent,
-    TabsComponent,
-    TooltipComponent,
-    TimepickerComponent,
-} from './components';
+
 import { PageHeaderModule } from '../../shared';
 
 describe('BsComponentComponent', () => {
@@ -35,18 +22,6 @@ describe('BsComponentComponent', () => {
       ],
       declarations: [
         BsComponentComponent,
-        ButtonsComponent,
-        AlertComponent,
-        ModalComponent,
-        CollapseComponent,
-        DatePickerComponent,
-        DropdownComponent,
-        PaginationComponent,
-        PopOverComponent,
-        ProgressbarComponent,
-        TabsComponent,
-        TooltipComponent,
-        TimepickerComponent
       ]
     })
     .compileComponents();

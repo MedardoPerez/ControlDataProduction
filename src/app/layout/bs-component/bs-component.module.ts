@@ -2,24 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ChartsModule as Ng2Charts } from 'ng2-charts';
 // relative import
 import { BsComponentRoutingModule } from './bs-component-routing.module';
 import { BsComponentComponent } from './bs-component.component';
-import {
-    AlertComponent,
-    ButtonsComponent,
-    ModalComponent,
-    CollapseComponent,
-    DatePickerComponent,
-    DropdownComponent,
-    PaginationComponent,
-    PopOverComponent,
-    ProgressbarComponent,
-    TabsComponent,
-    TooltipComponent,
-    TimepickerComponent,
-} from './components';
 import { PageHeaderModule } from '../../shared';
 
 @NgModule({
@@ -30,21 +16,10 @@ import { PageHeaderModule } from '../../shared';
         NgbModule.forRoot(),
         PageHeaderModule,
         BsComponentRoutingModule,
+        Ng2Charts,
     ],
     declarations: [
         BsComponentComponent,
-        ButtonsComponent,
-        AlertComponent,
-        ModalComponent,
-        CollapseComponent,
-        DatePickerComponent,
-        DropdownComponent,
-        PaginationComponent,
-        PopOverComponent,
-        ProgressbarComponent,
-        TabsComponent,
-        TooltipComponent,
-        TimepickerComponent
     ]
 })
 export class BsComponentModule { }
